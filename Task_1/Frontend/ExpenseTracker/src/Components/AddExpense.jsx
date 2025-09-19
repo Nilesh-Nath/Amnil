@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { toast , ToastContainer } from 'react-toastify';
+import { useContext } from 'react';
+import { AuthContext } from '../Pages/AuthContext';
 
 const AddExpense = () => {
-
+  const { accessToken } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     day: '',
     category: '',
@@ -22,7 +24,7 @@ const AddExpense = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        await axios.post('http://localhost:5000/expenses',{formData},{withCredentials:true})
+        await axios.post('http://localhost:5000/expenses',{formData},{withCredentials:true , headers : {'Authorization' : `Bearer ${accessToken}`}})
         setFormData({
           day: '',
           category: '',

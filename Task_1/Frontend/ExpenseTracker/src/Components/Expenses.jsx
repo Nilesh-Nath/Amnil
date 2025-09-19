@@ -2,11 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import EditExpenseModal from "./EditExpenseModal";
 import { toast , ToastContainer } from 'react-toastify';
+import { useContext } from "react";
+import { AuthContext } from "../Pages/AuthContext";
 
 const Expenses = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingExpense, setEditingExpense] = useState(null);
+  const { accessToken } = useContext(AuthContext);
 
   useEffect(() => {
     handleFetch();
@@ -16,6 +19,7 @@ const Expenses = () => {
     try {
       const response = await axios.get("http://localhost:5000/getExpenses", {
         withCredentials: true,
+        headers : {'Authorization' : `Bearer ${accessToken}`}
       });
       setData(response.data.data || []);
     } catch (err) {

@@ -48,3 +48,51 @@ This is a simple Expense Tracker  built using **React.js** for the frontend and 
 ### 📊 Past Expenses
 
 ![History](./Screenshots/History.jpeg)
+
+
+# Task 2
+
+This project implements a full authentication system with user management, image upload, and logging.  
+
+## Features
+- **Login & Signup** using **bcrypt** for password hashing  
+- **JWT authentication** with **Access Token** and **Refresh Token**  
+- **Auth Context** for managing authentication state in frontend  
+- **Auth Middleware** to protect routes  
+- **Forget Password** functionality using **nodemailer** and **crypto**  
+- **Profile Image Upload** using **Cloudinary**, with secure storage of user profile pictures  
+- **Logging** implemented with **winston** and **morgan**  
+- **Implemented Backend Pagination**
+- **Implemented API Documentation** using **Swagger UI**
+## Packages Used
+
+- Authentication: bcrypt, JWT (Access + Refresh Tokens), Auth Middleware
+- Email & Password Recovery: nodemailer, crypto
+- Image Storage: Cloudinary
+- Frontend State Management: React Context 
+- Logging: winston, morgan
+- Database: PostgreSQL
+
+
+## 🖼️ Screenshots
+
+###  Signup page
+
+![signup](./Screenshots/signup.png)
+
+###  Login Page
+
+![Login](./Screenshots/login.png)
+
+### Forget Password
+
+![Forget_password](./Screenshots/forget_pass.png)
+
+### Reset Password
+
+![Reset_password](./Screenshots/reset_pass.png)
+
+### Profile
+
+![profile](./Screenshots/profile.png)
+

@@ -13,6 +13,8 @@ import { Pie } from 'react-chartjs-2';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { useContext } from 'react';
+import { AuthContext } from '../Pages/AuthContext';
 
 ChartJS.register(
   CategoryScale,
@@ -27,14 +29,15 @@ const ExpenseByCategory = () => {
 
     const [labels,setLabels] = useState([]);
     const [expenses,setExpenses] = useState([]);
-
+    const { accessToken } = useContext(AuthContext);
+    
     useEffect(()=>{
         fetchData()
     },[])
 
     const fetchData = async ()=>{
         try{
-            const response = await axios.get('http://localhost:5000/getExpenseByCategory',{withCredentials:true})
+            const response = await axios.get('http://localhost:5000/getExpenseByCategory',{withCredentials:true,headers : {'Authorization' : `Bearer ${accessToken}`}})
             const data = response.data.data;
 
             const categories = data.map(item=>item.category)

@@ -1,23 +1,15 @@
-import React from 'react'
-import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
-const AuthRedirect = () => {
-    const navigate = useNavigate();
+const AuthRedirect = ({children}) => {
+    const {accessToken} = useContext(AuthContext)
 
-    useEffect(()=>{
-        const userCookie = Cookies.get('UserData');
+    if(accessToken){
+      return  <Navigate to="/" replace />
+    }
 
-        if(userCookie){
-            navigate('/Dashboard')
-        }else{
-            navigate('/Income')
-        }
-    },[navigate])
-
-
-  return null;
+  return children;
 }
 
 export default AuthRedirect
