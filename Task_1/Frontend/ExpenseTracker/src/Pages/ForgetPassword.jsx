@@ -22,7 +22,7 @@ const ForgetPassword = () => {
         }
 
         try {
-            const res = await axios.post("http://localhost:5000/forget-password", {
+            const res = await axios.post("http://localhost:5000/api/auth/forget-password", {
                 email,
             }, { withCredentials: true })
 

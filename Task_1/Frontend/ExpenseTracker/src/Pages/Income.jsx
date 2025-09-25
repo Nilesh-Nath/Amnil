@@ -28,7 +28,7 @@ const Income = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost:5000/income',{
+            const response = await axios.post('http://localhost:5000/api/expenses/income',{
                 userData}
             ,{withCredentials:true , headers : { 'Authorization' : `Bearer ${accessToken}` }})
 

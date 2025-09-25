@@ -24,7 +24,7 @@ const AddExpense = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        await axios.post('http://localhost:5000/expenses',{formData},{withCredentials:true , headers : {'Authorization' : `Bearer ${accessToken}`}})
+        await axios.post('http://localhost:5000/api/expenses',{formData},{withCredentials:true , headers : {'Authorization' : `Bearer ${accessToken}`}})
         setFormData({
           day: '',
           category: '',

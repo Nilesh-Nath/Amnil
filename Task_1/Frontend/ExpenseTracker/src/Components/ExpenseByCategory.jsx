@@ -37,7 +37,7 @@ const ExpenseByCategory = () => {
 
     const fetchData = async ()=>{
         try{
-            const response = await axios.get('http://localhost:5000/getExpenseByCategory',{withCredentials:true,headers : {'Authorization' : `Bearer ${accessToken}`}})
+            const response = await axios.get('http://localhost:5000/api/expenses/by-category',{withCredentials:true,headers : {'Authorization' : `Bearer ${accessToken}`}})
             const data = response.data.data;
 
             const categories = data.map(item=>item.category)

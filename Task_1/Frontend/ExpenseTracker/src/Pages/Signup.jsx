@@ -71,7 +71,7 @@ const Signup = () => {
         }
 
         try{
-            const response = await axios.post('http://localhost:5000/signup',{formData})
+            const response = await axios.post('http://localhost:5000/api/auth/signup',{formData})
             toast.success(`${response.data.msg}`)
             toast.success('Redirecting to login page...')
             setTimeout(()=>{

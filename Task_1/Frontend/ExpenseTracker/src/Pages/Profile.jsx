@@ -23,7 +23,7 @@ const Profile = () => {
 
   const fetchUserData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/getData', {
+      const res = await axios.get('http://localhost:5000/api/users/profile', {
         withCredentials: true,
         headers: { Authorization: `Bearer ${accessToken}` }
       });
@@ -36,7 +36,7 @@ const Profile = () => {
   const fetchExpenses = async (page = 1, limit = 2) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/getAllExpenses?page=${page}&limit=${limit}`, {
+      const response = await axios.get(`http://localhost:5000/api/expenses/all?page=${page}&limit=${limit}`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${accessToken}` }
       });
@@ -57,7 +57,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+      const response = await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
       toast.info(response.data.msg);
       navigate('/login');
     } catch (err) {
@@ -80,7 +80,7 @@ const Profile = () => {
 
     try {
       setUploading(true);
-      const res = await axios.post('http://localhost:5000/uploadProfilePic', formData, {
+      const res = await axios.post('http://localhost:5000/api/upload/profile-pic', formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'multipart/form-data'

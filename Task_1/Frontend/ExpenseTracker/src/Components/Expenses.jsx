@@ -17,7 +17,7 @@ const Expenses = () => {
 
   const handleFetch = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/getExpenses", {
+      const response = await axios.get("http://localhost:5000/api/expenses", {
         withCredentials: true,
         headers : {'Authorization' : `Bearer ${accessToken}`}
       });
@@ -33,8 +33,8 @@ const Expenses = () => {
     if (!confirm("Are you sure you want to delete this expense?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/deleteExpense/${eid}`, {
-        withCredentials: true,
+      await axios.delete(`http://localhost:5000/api/expenses/${eid}`, {
+        withCredentials: true,headers : {'Authorization' : `Bearer ${accessToken}`}
       });
       setData((prev) => prev.filter((item) => item.eid !== eid));
       toast.error('Expense deleted!')

@@ -37,7 +37,7 @@ const ExpensePerDay = () => {
 
     const fetchData = async ()=>{
         try{
-            const response = await axios.get('http://localhost:5000/getDailyExpense' ,{withCredentials:true, headers : {'Authorization' : `Bearer ${accessToken}`}})
+            const response = await axios.get('http://localhost:5000/api/expenses/daily' ,{withCredentials:true, headers : {'Authorization' : `Bearer ${accessToken}`}})
             const data = response.data.data;
 
             const days = data.map(item=>item.day)

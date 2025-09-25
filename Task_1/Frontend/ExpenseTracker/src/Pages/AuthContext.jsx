@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
         isRefreshing.current = true;
         refreshPromise.current = axios.post(
-            "http://localhost:5000/refresh",
+            "http://localhost:5000/api/auth/refresh",
             {},
             { withCredentials: true }
         )

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import axios from 'axios';
 import { toast , ToastContainer } from 'react-toastify'
+
+import { AuthContext } from '../Pages/AuthContext';
 
 const EditExpenseModal = ({ expense, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const EditExpenseModal = ({ expense, onClose, onUpdate }) => {
     amount: '',
     description: '',
   });
+
+  const { accessToken } = useContext(AuthContext);
 
   useEffect(() => {
     if (expense) {
@@ -33,9 +37,9 @@ const EditExpenseModal = ({ expense, onClose, onUpdate }) => {
 
     try {
       await axios.put(
-        `http://localhost:5000/expenses/${expense.eid}`,
+        `http://localhost:5000/api/expenses/${expense.eid}`,
         { ...formData },
-        { withCredentials: true }
+        { withCredentials: true ,headers : {'Authorization' : `Bearer ${accessToken}`} }
       );
       onUpdate();
       onClose();
